@@ -1,0 +1,1591 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>User Manual — Infinite Aura</title>
+
+  <!-- App / Site Icon (Infinite Aura) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_en/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_en/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_en/favicon-16x16.png">
+  <link rel="shortcut icon" href="https://infiniteauraapp.github.io/InfiniteAuraPrivacyPoclicy_en/favicon.ico">
+
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="msapplication-TileColor" content="#0b0c10">
+
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --surface: rgba(255,255,255,.05);
+      --surface2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.93);
+      --muted: rgba(255,255,255,.72);
+      --border: rgba(255,255,255,.12);
+      --accent: #7c5cff;
+      --accent2: #25d366;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+
+      --pad: clamp(14px, 1.6vw, 22px);
+      --gap: clamp(12px, 1.4vw, 18px);
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f6f7fb;
+        --surface: rgba(0,0,0,.045);
+        --surface2: rgba(0,0,0,.065);
+        --text: rgba(0,0,0,.92);
+        --muted: rgba(0,0,0,.64);
+        --border: rgba(0,0,0,.12);
+        --shadow: 0 14px 34px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.9;
+      background:
+        radial-gradient(900px 650px at 15% -10%, rgba(124,92,255,.30), transparent 60%),
+        radial-gradient(800px 600px at 100% 10%, rgba(37,211,102,.16), transparent 60%),
+        var(--bg);
+    }
+
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    :focus-visible{
+      outline: 3px solid rgba(124,92,255,.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .skip{
+      position:absolute;
+      top:-60px;
+      left:16px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding:10px 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: top .2s ease;
+      z-index: 50;
+    }
+    .skip:focus{ top: 14px; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 16px 70px;
+    }
+
+    header.hero{
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding: calc(var(--pad) + 6px);
+      position: relative;
+      overflow: hidden;
+    }
+    header.hero::after{
+      content:"";
+      position:absolute;
+      inset:-60px -70px auto auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.26), transparent 55%);
+      transform: rotate(18deg);
+      pointer-events:none;
+      filter: blur(.2px);
+    }
+
+    .brand{
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .brand h1{
+      margin: 0;
+      font-size: clamp(22px, 2.6vw, 36px);
+      letter-spacing: .2px;
+      line-height: 1.25;
+    }
+
+    .meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+    }
+
+    .btnRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 4px;
+    }
+
+    button{
+      font-family: inherit;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      backdrop-filter: blur(8px);
+    }
+    button:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      transform: translateY(-1px);
+    }
+    button:active{ transform: translateY(0); }
+
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: var(--gap);
+      margin-top: var(--gap);
+      align-items:start;
+    }
+    @media (min-width: 980px){
+      .grid{ grid-template-columns: 360px 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-h{
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-h h2{
+      margin: 0;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: .2px;
+    }
+
+    .card-b{ padding: 14px; }
+
+    .tocWrap{
+      position: relative;
+    }
+
+    @media (min-width: 980px){
+      .tocWrap{
+        position: sticky;
+        top: 18px;
+        max-height: calc(100vh - 36px);
+        overflow: auto;
+        scrollbar-width: thin;
+      }
+    }
+
+    .toc a{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      color: var(--text);
+      border: 1px solid transparent;
+      transition: background .12s ease, border-color .12s ease, transform .12s ease;
+    }
+    .toc a:hover{
+      background: var(--surface2);
+      border-color: var(--border);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .toc a.active{
+      background: rgba(124,92,255,.16);
+      border-color: rgba(124,92,255,.35);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.10) inset;
+    }
+
+    main article{ padding: 16px; }
+
+    .prose{
+      max-width: 78ch;
+      margin-inline: auto;
+      padding-bottom: 4px;
+    }
+
+    details.policy-sec{
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      scroll-margin-top: 96px;
+    }
+    details.policy-sec:last-child{
+      border-bottom: none;
+      padding-bottom: 6px;
+    }
+
+    details.policy-sec > summary{
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      transition: background .12s ease, transform .12s ease, border-color .12s ease;
+    }
+
+    details.policy-sec > summary:hover{
+      background: var(--surface2);
+      border-color: rgba(255,255,255,.18);
+      transform: translateY(-1px);
+    }
+
+    details.policy-sec > summary::-webkit-details-marker{ display:none; }
+
+    details.policy-sec > summary .title{
+      font-size: clamp(18px, 1.5vw, 20px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: .15px;
+      margin: 0;
+    }
+
+    details.policy-sec > summary::after{
+      content: "▾";
+      font-size: 18px;
+      opacity: .8;
+      transform: translateY(-1px);
+      transition: transform .14s ease;
+    }
+
+    details.policy-sec[open] > summary{
+      background: rgba(124,92,255,.10);
+      border-color: rgba(124,92,255,.35);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.10) inset;
+      transform: none;
+    }
+
+    details.policy-sec[open] > summary::after{
+      transform: rotate(180deg);
+    }
+
+    details.policy-sec .sec-body{
+      padding: 12px 4px 6px;
+    }
+
+    h3{
+      margin: 0 0 10px;
+      font-size: clamp(18px, 1.5vw, 20px);
+      line-height: 1.35;
+      letter-spacing: .15px;
+    }
+
+    p{ margin: 0 0 10px; }
+
+    ul,ol{
+      margin: 10px 0;
+      padding: 0 0 0 18px;
+    }
+    li{ margin: 8px 0; }
+
+    code{
+      font-family: var(--mono);
+      font-size: 0.92em;
+      padding: 2px 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+
+    .callout{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    .callout strong{ display:block; margin-bottom: 6px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+      margin: 4px 6px 4px 0;
+      white-space: nowrap;
+    }
+    .badge i{
+      width: 10px; height: 10px; border-radius: 999px; display:inline-block;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.16);
+    }
+    .badge.ok i{ background: #25d366; box-shadow: 0 0 0 4px rgba(37,211,102,.15); }
+    .badge.warn i{ background: #ffb020; box-shadow: 0 0 0 4px rgba(255,176,32,.15); }
+    .badge.bad i{ background: #ff4d4f; box-shadow: 0 0 0 4px rgba(255,77,79,.15); }
+
+    .prose details:not(.policy-sec){
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding: 10px 12px;
+      margin: 12px 0;
+    }
+    .prose details[open]:not(.policy-sec){
+      background: rgba(255,255,255,.04);
+    }
+    .prose details:not(.policy-sec) > summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: var(--text);
+      list-style: none;
+    }
+    .prose details:not(.policy-sec) > summary::-webkit-details-marker{ display:none; }
+
+    .hr{
+      height: 1px;
+      background: var(--border);
+      margin: 12px 0;
+    }
+
+    .footer{
+      margin-top: var(--gap);
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+    }
+
+    .tocMobile{ display:none; }
+    @media (max-width: 979px){
+      .tocMobile{ display:block; margin-top: var(--gap); }
+      .tocDesktop{ display:none; }
+      main article{ padding: 14px; }
+    }
+
+    @media print{
+      body{ background:#fff; color:#000; }
+      .card, header.hero, .footer{ box-shadow:none; }
+      a{ color:#000; text-decoration: underline; }
+      .btnRow, .skip{ display:none; }
+      .tocDesktop{ display:none; }
+      .tocMobile{ display:none; }
+      .prose{ max-width: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      button, .toc a{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="brand">
+        <div>
+          <h1>User Manual — Infinite Aura</h1>
+          <div class="meta">
+            <span class="pill">Last updated: <strong id="lastUpdated">December 26, 2025</strong></span>
+            <span class="pill">Manual version: <strong>v1</strong></span>
+          </div>
+        </div>
+
+        <div class="btnRow">
+          <button type="button" onclick="window.print()">Print / Save PDF</button>
+          <button type="button" onclick="toggleAll(true)">Open all sections</button>
+          <button type="button" onclick="toggleAll(false)">Close all sections</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:12px">
+        This manual explains <strong>step by step</strong> how to use the main real screens and features in
+        <strong>Infinite Aura</strong> as implemented in the project (Registration + Email OTP verification, Centers Directory + Booking,
+        Center Booking Management, Public Center Listing publish/hide, Performance, and Archive).
+      </p>
+    </header>
+
+    <!-- Mobile TOC -->
+    <details class="card tocMobile">
+      <summary class="card-h" style="user-select:none">
+        <h2 style="margin:0; font-size:16px">Quick Table of Contents</h2>
+        <span class="small">Tap to open</span>
+      </summary>
+      <div class="card-b toc" id="tocMobile">
+        <a href="#s1">1) Overview & Roles</a>
+        <a href="#s2">2) Requirements & Permissions</a>
+        <a href="#s3">3) Create an Account</a>
+        <a href="#s3a">3-A) Email OTP Verification</a>
+        <a href="#s3b">3-B) Center Verification Documents</a>
+        <a href="#s4">4) Login & Password Reset</a>
+        <a href="#s5">5) Individuals: Add & Manage</a>
+        <a href="#s5a">5-A) Create a New Session</a>
+        <a href="#s5b">5-B) Session Results</a>
+        <a href="#s5c">5-C) Guardian: Centers Directory & Booking Request</a>
+        <a href="#s5d">5-D) Guardian: Track Bookings & Respond to Reschedule</a>
+        <a href="#s6">6) Center: Center Management & Archive</a>
+        <a href="#s6a">6-A) Center: Public Listing (Publish/Hide)</a>
+        <a href="#s7">7) Center: Booking Management (Approve/Reject/Reschedule)</a>
+        <a href="#s8">8) Center: Performance Screen</a>
+        <a href="#s9">9) Center: Archive</a>
+        <a href="#s10">10) Admin: Center Requests & Verification</a>
+        <a href="#s11">11) Sub-admin: Country-based Center Management</a>
+        <a href="#s12">12) Notifications</a>
+        <a href="#s13">13) Quick Fixes & Support</a>
+      </div>
+    </details>
+
+    <div class="grid">
+      <!-- Desktop TOC -->
+      <aside class="card tocDesktop">
+        <div class="card-h">
+          <h2>Quick Table of Contents</h2>
+          <span class="small">Click to jump</span>
+        </div>
+        <div class="card-b toc tocWrap" id="toc">
+          <a href="#s1">1) Overview & Roles</a>
+          <a href="#s2">2) Requirements & Permissions</a>
+          <a href="#s3">3) Create an Account</a>
+          <a href="#s3a">3-A) Email OTP Verification</a>
+          <a href="#s3b">3-B) Center Verification Documents</a>
+          <a href="#s4">4) Login & Password Reset</a>
+          <a href="#s5">5) Individuals: Add & Manage</a>
+          <a href="#s5a">5-A) Create a New Session</a>
+          <a href="#s5b">5-B) Session Results</a>
+          <a href="#s5c">5-C) Guardian: Centers Directory & Booking Request</a>
+          <a href="#s5d">5-D) Guardian: Track Bookings & Respond to Reschedule</a>
+          <a href="#s6">6) Center: Center Management & Archive</a>
+          <a href="#s6a">6-A) Center: Public Listing (Publish/Hide)</a>
+          <a href="#s7">7) Center: Booking Management (Approve/Reject/Reschedule)</a>
+          <a href="#s8">8) Center: Performance Screen</a>
+          <a href="#s9">9) Center: Archive</a>
+          <a href="#s10">10) Admin: Center Requests & Verification</a>
+          <a href="#s11">11) Sub-admin: Country-based Center Management</a>
+          <a href="#s12">12) Notifications</a>
+          <a href="#s13">13) Quick Fixes & Support</a>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <main class="card" id="content">
+        <div class="card-h">
+          <h2>Manual Text</h2>
+        </div>
+
+        <article>
+          <div class="prose">
+
+            <!-- ===================== MANUAL SECTIONS (Accordion) ===================== -->
+
+            <details class="policy-sec" id="s1">
+              <summary><span class="title">1) Overview & Roles</span></summary>
+              <div class="sec-body">
+                <p>
+                  <strong>Infinite Aura</strong> supports account management and collaboration between parties
+                  (Guardian / Center / Trainer / Administration). Some features are shown based on the <strong>account role</strong>.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Guardian</span>
+                  <span class="badge"><i></i>Center</span>
+                  <span class="badge"><i></i>Trainer</span>
+                  <span class="badge"><i></i>Admin / Sub-admin</span>
+                </p>
+
+                <div class="callout">
+                  <strong>Important</strong>
+                  <p class="muted" style="margin:0">
+                    <strong>Center</strong> accounts use an internal verification workflow:
+                    <code>verification status can be: pending review / approved / rejected</code>.
+                    If rejected, the system may allow re-uploading documents depending on admin settings.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s2">
+              <summary><span class="title">2) Requirements & Permissions</span></summary>
+              <div class="sec-body">
+                <ol>
+                  <li>Install the app on Android.</li>
+                  <li>Select the app language (Arabic / English / Spanish / French / Hindi / Chinese).</li>
+                  <li>Permissions may appear based on what you use:
+                    <ul>
+                      <li><strong>Notifications</strong>: to receive booking updates.</li>
+                      <li><strong>Location</strong> (Centers): to auto-fill a Google Maps link when creating a public listing.</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <details>
+                  <summary>When do I need location permission?</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    Only if you tap <strong>Use current location</strong> in the public center page to auto-generate
+                    a Google Maps link. You can also paste a Maps link manually without granting permission.
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s3">
+              <summary><span class="title">3) Create an Account</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>From the Register screen</span></p>
+                <ol>
+                  <li>Open <strong>Create Account</strong>.</li>
+                  <li>Enter the basics:
+                    <ul>
+                      <li>Name (guardian name or center name depending on account type).</li>
+                      <li>Email address.</li>
+                      <li>Password.</li>
+                      <li>Select <strong>Country / Country code</strong> (important for centers).</li>
+                    </ul>
+                  </li>
+                  <li>Select account type:
+                    <ul>
+                      <li><strong>Guardian</strong>.</li>
+                      <li><strong>Center</strong> — requires verification documents (see section 3-B).</li>
+                    </ul>
+                  </li>
+                  <li>Complete <strong>Email OTP verification</strong> first (see section 3-A).</li>
+                  <li>After OTP succeeds, tap <strong>Register</strong> to finish creating the account.</li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Note</strong>
+                  <p class="muted" style="margin:0">
+                    The app prevents completing registration if OTP verification is not done
+                    (Register stays disabled until OTP succeeds).
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s3a">
+              <summary><span class="title">3-A) Email OTP Verification (Used in Register & Login)</span></summary>
+              <div class="sec-body">
+                <p>
+                  The system uses a 6-digit OTP code sent to your email.
+                  The same OTP concept is also used before login (extra security).
+                </p>
+
+                <ol>
+                  <li>Enter your email correctly.</li>
+                  <li>Tap <strong>Send OTP</strong>.</li>
+                  <li>Check your email (Inbox / Spam) for a 6-digit code.</li>
+                  <li>An OTP dialog appears (e.g., <strong>Email Verification</strong>):
+                    <ul>
+                      <li>Enter the 6-digit code.</li>
+                      <li>Tap <strong>Verify</strong>.</li>
+                      <li>If wrong/expired: you may see a message like “Invalid or expired code”.</li>
+                    </ul>
+                  </li>
+                  <li>On success: the dialog closes and verification is considered complete.</li>
+                </ol>
+
+                <details>
+                  <summary>Common OTP issues</summary>
+                  <div class="hr"></div>
+                  <ul>
+                    <li>Code not received: wait a minute, check Spam, and confirm the email is correct.</li>
+                    <li>Code doesn’t work: resend and use the <strong>latest</strong> code only.</li>
+                    <li>Don’t close the OTP dialog before verifying, otherwise the process is cancelled.</li>
+                  </ul>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s3b">
+              <summary><span class="title">3-B) Center Verification Documents (Centers only)</span></summary>
+              <div class="sec-body">
+                <p>
+                  When you choose <strong>Center</strong> account type, the app asks you to upload documents
+                  proving the center’s legitimacy. Admin/Sub-admin review these documents to approve or reject.
+                </p>
+
+                <ol>
+                  <li>On the register screen, after selecting <strong>Center</strong>, you will see <strong>Center Verification Documents</strong>.</li>
+                  <li>Tap upload and select files from your device.</li>
+                  <li>Constraints implemented in the app:
+                    <ul>
+                      <li>Accepted types are typically: PDF / images (depending on your file picker).</li>
+                      <li>Maximum size: <strong>50 MB</strong> per file.</li>
+                    </ul>
+                  </li>
+                  <li>After selecting: a list of chosen/uploaded files appears.</li>
+                  <li>Finish registration after OTP succeeds.</li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Warning</strong>
+                  <p class="muted" style="margin:0">
+                    If center document upload fails during registration, the system may cancel/delete the new account
+                    to avoid creating a center without documents.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s4">
+              <summary><span class="title">4) Login & Password Reset</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Login</span> <span class="badge warn"><i></i>OTP before login</span></p>
+
+                <ol>
+                  <li>Open <strong>Login</strong>.</li>
+                  <li>Enter email and password.</li>
+                  <li>Before signing in, <strong>Email OTP</strong> starts:
+                    <ul>
+                      <li>A code is sent to your email.</li>
+                      <li>Enter the code in the dialog and verify.</li>
+                    </ul>
+                  </li>
+                  <li>After OTP success, the app signs you in with email/password.</li>
+                </ol>
+
+                <details>
+                  <summary>Forgot password?</summary>
+                  <div class="hr"></div>
+                  <ol>
+                    <li>On the login screen choose <strong>Forgot password</strong>.</li>
+                    <li>Enter your email.</li>
+                    <li>You’ll receive a reset email.</li>
+                  </ol>
+                  <p class="muted">(Password reset is handled via Firebase Auth.)</p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s5">
+              <summary><span class="title">5) Individuals: Add & Manage</span></summary>
+              <div class="sec-body">
+                <p>
+                  The <strong>Individuals</strong> screen is the starting point to manage individuals in the project.
+                  From there you can <strong>add an individual</strong>, open their profile, view sessions, and
+                  (for Center accounts) also <strong>schedule an upcoming session</strong>.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Individuals list</span>
+                  <span class="badge ok"><i></i>Add individual</span>
+                  <span class="badge warn"><i></i>Upcoming session</span>
+                </p>
+
+                <h3>First: View the individuals list</h3>
+                <ol>
+                  <li>Open <strong>Individuals</strong>.</li>
+                  <li>You will see a list of saved individuals.</li>
+                  <li>Tap a card to open <strong>Individual Details</strong>.</li>
+                </ol>
+
+                <h3>Second: Add a new individual</h3>
+                <ol>
+                  <li>From the list screen, tap <strong>+</strong> or <strong>Add</strong>.</li>
+                  <li>Fill the basic data:
+                    <ul>
+                      <li><strong>First name</strong> and <strong>Last name</strong> (required).</li>
+                      <li><strong>Gender</strong> (Male/Female).</li>
+                      <li><strong>Date of birth</strong> (pick a date).</li>
+                      <li><strong>Notes</strong> (optional).</li>
+                    </ul>
+                  </li>
+                  <li>(Optional) Add a profile photo:
+                    <ul>
+                      <li><strong>Camera</strong> or <strong>Gallery</strong>.</li>
+                    </ul>
+                  </li>
+                  <li>(Optional) Guardian info:
+                    <ul>
+                      <li><strong>Guardian name</strong> / <strong>Relation</strong> / <strong>Guardian email</strong></li>
+                    </ul>
+                  </li>
+                  <li>Tap <strong>Save</strong> to add the individual to the list.</li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Project linkage</strong>
+                  <p class="muted" style="margin:0">
+                    If you upload an individual photo, it later appears in the individual profile screen.
+                    The individual file is the base for all sessions and results.
+                  </p>
+                </div>
+
+                <h3>Third: Open an individual file (details / profile)</h3>
+                <ol>
+                  <li>Tap the individual card.</li>
+                  <li>In <strong>Individual Details</strong> you’ll find quick actions such as:
+                    <ul>
+                      <li><strong>Start a new session</strong> (see 5-A).</li>
+                      <li><strong>Review status</strong> (if enabled).</li>
+                      <li><strong>Open profile</strong> (basic info + photo).</li>
+                    </ul>
+                  </li>
+                  <li>Below you’ll see a list of <strong>sessions</strong>; tap any session to open <strong>Session Results</strong> (see 5-B).</li>
+                </ol>
+
+                <details>
+                  <summary>Center feature: Schedule an upcoming session</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    From the Individuals list (when signed in as <strong>Center</strong>), you can use
+                    <strong>Schedule next session</strong>:
+                  </p>
+                  <ol>
+                    <li>Tap <strong>Schedule next session</strong> on the individual card.</li>
+                    <li>Pick <strong>date</strong>, then <strong>time</strong>.</li>
+                    <li>Tap <strong>Save</strong>.</li>
+                  </ol>
+                  <p class="muted" style="margin:0">
+                    The time is saved inside the individual record as <code>next_session_at</code>.
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s5a">
+              <summary><span class="title">5-A) Create a New Session</span></summary>
+              <div class="sec-body">
+                <p>
+                  <strong>New Session</strong> is the core assessment screen in the project.
+                  A session includes a <strong>photo</strong>, <strong>questionnaire answers</strong>, and (optional) <strong>therapies</strong> and <strong>activities</strong>.
+                  On save, scores are calculated and the results screen opens.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Photo analysis</span>
+                  <span class="badge"><i></i>Questionnaire</span>
+                  <span class="badge bad"><i></i>Activities</span>
+                  <span class="badge ok"><i></i>Analyze & Save</span>
+                </p>
+
+                <div class="callout">
+                  <strong>How do I reach this screen?</strong>
+                  <p class="muted" style="margin:0">
+                    From <strong>Individual Details</strong>, tap <strong>Start new session</strong>.
+                  </p>
+                </div>
+
+                <h3>1) Add a session photo (required for photo analysis)</h3>
+                <ol>
+                  <li>Tap <strong>Capture photo</strong>.</li>
+                  <li>Select source: <strong>Camera</strong> or <strong>Gallery</strong>.</li>
+                  <li>After selecting, the system analyzes the photo.</li>
+                </ol>
+
+                <details>
+                  <summary>What if no face is detected?</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    If the image does not contain a clear face, you may see a “No face found” message.
+                    Choose another photo or capture a clearer one.
+                  </p>
+                </details>
+
+                <h3>2) Fill the questionnaire</h3>
+                <ol>
+                  <li>You will see a list of questions.</li>
+                  <li>For each question choose a score from 1 to 5.</li>
+                  <li>Complete all required questions for more accurate results.</li>
+                </ol>
+
+                <h3>3) (Optional) Add therapies to the session</h3>
+                <ol>
+                  <li>Open <strong>Therapies</strong>.</li>
+                  <li>Enable a therapy (switch) to include it.</li>
+                  <li>For each therapy you can enter:
+                    <ul>
+                      <li><strong>Goal</strong></li>
+                      <li><strong>Notes</strong></li>
+                      <li><strong>Effectiveness</strong> (1–5)</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <h3>4) Add activities</h3>
+                <ol>
+                  <li>From <strong>Activities</strong>, choose an activity.</li>
+                  <li>Set:
+                    <ul>
+                      <li><strong>Repeats per day</strong></li>
+                      <li><strong>Notes</strong> (optional)</li>
+                    </ul>
+                  </li>
+                  <li>Tap <strong>Add activity</strong> to add it to the session list.</li>
+                  <li>You can remove an activity if needed.</li>
+                </ol>
+
+                <h3>5) Save and open results</h3>
+                <ol>
+                  <li>Tap <strong>Analyze</strong>.</li>
+                  <li>The session is saved with scores:
+                    <ul>
+                      <li><strong>Photo score</strong></li>
+                      <li><strong>Questionnaire score</strong></li>
+                      <li><strong>Activities score</strong></li>
+                      <li><strong>Combined score</strong></li>
+                    </ul>
+                  </li>
+                  <li>After saving, you are redirected to <strong>Session Results</strong>.</li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Security note (project-related)</strong>
+                  <p class="muted" style="margin:0">
+                    Session photo and questionnaire answers are handled securely in the project (encryption/decryption for authorized viewers),
+                    so you may notice a small extra loading time when opening results.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s5b">
+              <summary><span class="title">5-B) Session Results</span></summary>
+              <div class="sec-body">
+                <p>
+                  <strong>Session Results</strong> shows session details after saving: scores, session photo (if any),
+                  and questionnaire answers in <strong>read-only</strong> mode, plus therapies and activities saved in that session.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Results</span>
+                  <span class="badge"><i></i>Session photo</span>
+                  <span class="badge warn"><i></i>Questionnaire answers</span>
+                  <span class="badge ok"><i></i>Therapies &amp; Activities</span>
+                </p>
+
+                <h3>How do I open results?</h3>
+                <ol>
+                  <li>Open <strong>Individual Details</strong>.</li>
+                  <li>From the sessions list, tap a session.</li>
+                  <li><strong>Session Results</strong> opens.</li>
+                </ol>
+
+                <h3>What will you see?</h3>
+                <ol>
+                  <li><strong>Top section</strong>: session date/time and quick summary.</li>
+                  <li><strong>Scores</strong>: Photo / Questionnaire / Activities / Combined (0 to 100).</li>
+                  <li><strong>Session photo</strong> (if saved): displayed after loading and decryption for authorized users.</li>
+                  <li><strong>Questionnaire answers</strong>: shown per question (1–5) with a lock icon <strong>🔒</strong> (read-only).</li>
+                  <li><strong>Therapies</strong>: goal, notes, effectiveness.</li>
+                  <li><strong>Activities</strong>: repeats/day and notes (if any).</li>
+                </ol>
+
+                <details>
+                  <summary>Why does the session photo sometimes not show?</summary>
+                  <div class="hr"></div>
+                  <ul>
+                    <li class="muted">The session may have been saved without a photo.</li>
+                    <li class="muted">There may be a delay while loading/decrypting.</li>
+                    <li class="muted">The current account may not have permission/key to view it (depending on sharing logic).</li>
+                  </ul>
+                </details>
+
+                <div class="callout">
+                  <strong>How results connect to other screens</strong>
+                  <p class="muted" style="margin:0">
+                    Session results are directly linked from <strong>Individual Details</strong> (sessions list),
+                    and can later be used by <strong>Status</strong> summaries and performance analytics where enabled.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s5c">
+              <summary><span class="title">5-C) Guardian: Centers Directory & Send a Booking Request</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Centers Directory</span> <span class="badge ok"><i></i>Booking requests</span></p>
+
+                <ol>
+                  <li>Open <strong>Centers Directory</strong>.</li>
+                  <li>Select a country and use search to filter results.</li>
+                  <li>You will see center cards with published data (description/address/phone/links/maps… as provided by the center).</li>
+                  <li>Tap <strong>Contact</strong> to see options:
+                    <ul>
+                      <li>Call</li>
+                      <li>Location (if available)</li>
+                      <li>Open Google Maps</li>
+                    </ul>
+                  </li>
+                  <li>To send a booking request: tap <strong>Booking Request</strong> on the center card.</li>
+                  <li>Fill the request:
+                    <ul>
+                      <li><strong>Preferred time</strong>: choose date then time.</li>
+                      <li><strong>Duration</strong>: <code>30 / 45 / 60 / 90 / 120</code> minutes.</li>
+                      <li><strong>Message</strong>: describe what you need.</li>
+                    </ul>
+                  </li>
+                  <li>Tap <strong>Send</strong>. The request becomes <strong>Pending</strong>.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s5d">
+              <summary><span class="title">5-D) Guardian: Track Bookings & Respond to Reschedule</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>My bookings</span> <span class="badge warn"><i></i>Needs action</span></p>
+
+                <ol>
+                  <li>Open <strong>My Bookings</strong>.</li>
+                  <li>Main tabs:
+                    <ul>
+                      <li><strong>Pending</strong>: waiting for the center’s response.</li>
+                      <li><strong>Needs action</strong>: the center proposed a new time and needs your response.</li>
+                      <li><strong>Approved</strong>: confirmed appointments.</li>
+                    </ul>
+                  </li>
+                  <li>Inside <strong>Needs action</strong>:
+                    <ul>
+                      <li>Review the proposed time and previous time (if shown).</li>
+                      <li>Tap <strong>Accept</strong> to approve the new time.</li>
+                      <li>Or tap <strong>Decline</strong> to reject it.</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <details>
+                  <summary>Quick status meanings</summary>
+                  <div class="hr"></div>
+                  <ul>
+                    <li><strong>pending</strong>: waiting for center response</li>
+                    <li><strong>approved</strong>: confirmed appointment</li>
+                    <li><strong>rejected</strong>: rejected (a reason may appear)</li>
+                    <li><strong>rescheduled</strong>: center proposed a new time (your action needed)</li>
+                  </ul>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s6">
+              <summary><span class="title">6) Center: Center Management & Archive</span></summary>
+              <div class="sec-body">
+                <p>
+                  <strong>Center Management</strong> is used to share items from the center account
+                  (such as <strong>Individuals</strong> and <strong>Therapies</strong>) with other accounts by email
+                  (Guardian / Trainer / etc.). It also includes a direct button to open the <strong>Archive</strong>.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Sharing targets</span>
+                  <span class="badge"><i></i>Individuals</span>
+                  <span class="badge"><i></i>Therapies</span>
+                  <span class="badge ok"><i></i>Archive</span>
+                </p>
+
+                <div class="callout">
+                  <strong>How do I reach this screen?</strong>
+                  <p class="muted" style="margin:0">
+                    From a <strong>Center</strong> account: open <strong>Profile</strong> then under Center Tools choose
+                    <strong>Center Management</strong>. You can also open it from the home shortcuts (if available).
+                  </p>
+                </div>
+
+                <h3>1) Add a sharing target (email)</h3>
+                <ol>
+                  <li>At the top, find <strong>Share with accounts</strong>.</li>
+                  <li>Enter the target <strong>email</strong>.</li>
+                  <li>(Optional) Enter a <strong>name</strong> for easier recognition.</li>
+                  <li>Select <strong>User type</strong>:
+                    <code>Guardian / Trainer / Center / Other</code>
+                  </li>
+                  <li>Tap <strong>Save</strong> to store it in the <strong>Sharing targets</strong> list.</li>
+                </ol>
+
+                <details>
+                  <summary>Important note about “selecting a sharing target”</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    When you tap a target in <strong>Sharing targets</strong>, it becomes selected.
+                    The app uses the selected target to indicate which items are <strong>already shared</strong>.
+                    This is most accurate when <strong>only one</strong> target is selected.
+                  </p>
+                </details>
+
+                <h3>2) Search & filters inside Center Management</h3>
+                <ol>
+                  <li>Use <strong>Search</strong> to type an individual/therapy name or an email/name.</li>
+                  <li>Choose where to search:
+                    <ul>
+                      <li><strong>Individuals</strong></li>
+                      <li><strong>Therapies</strong></li>
+                      <li><strong>Emails / Accounts</strong></li>
+                    </ul>
+                  </li>
+                  <li>To clear search, use the clear button in the search field.</li>
+                </ol>
+
+                <h3>3) Share individuals/therapies with the selected target</h3>
+                <ol>
+                  <li>Select a target from <strong>Sharing targets</strong>.</li>
+                  <li>Select individuals via checkboxes.</li>
+                  <li>Select therapies via checkboxes.</li>
+                  <li>Tap <strong>Share selected</strong>.</li>
+                  <li>After sharing:
+                    <ul>
+                      <li>You may see a <strong>🔗</strong> icon on shared items.</li>
+                      <li>You may see <strong>Already shared</strong> when one target is selected.</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Two required conditions before sharing/unsharing</strong>
+                  <ul class="muted" style="margin:0; padding-left:18px">
+                    <li>You must select a <strong>sharing target</strong> first.</li>
+                    <li>You must select <strong>at least one individual or therapy</strong>.</li>
+                  </ul>
+                </div>
+
+                <h3>4) Unshare (remove sharing)</h3>
+                <ol>
+                  <li>Select the same target (email).</li>
+                  <li>Select the individuals/therapies to unshare.</li>
+                  <li>Tap <strong>Unshare selected</strong>.</li>
+                </ol>
+
+                <h3>5) Archive link from Center Management</h3>
+                <p class="muted">
+                  At the bottom of <strong>Center Management</strong> there is an <strong>Archive</strong> button that opens
+                  the center’s archive screen.
+                </p>
+
+                <ol>
+                  <li>Tap <strong>Archive</strong> (archive icon).</li>
+                  <li>You go to <strong>Center Archive</strong>, which shows archived individuals/items.</li>
+                  <li>Tap an archived item to open details and view <strong>archived sessions</strong>.</li>
+                  <li>Inside an archived session you may see <strong>Restore</strong> to move it back to the original individual record.</li>
+                  <li>You can also delete an archive item from the list using the delete button (🗑️).</li>
+                </ol>
+
+                <details>
+                  <summary>What does “Restore session” mean in the archive?</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    Restore moves the archived session from the archive path back to the original individual record
+                    (based on IDs saved in the archive document), so it appears again under the individual’s sessions.
+                  </p>
+                </details>
+
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s6a">
+              <summary><span class="title">6-A) Center: Public Listing (Publish/Hide in Centers Directory)</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Public center page</span> <span class="badge ok"><i></i>Published</span></p>
+
+                <ol>
+                  <li>Open <strong>Public Center Page</strong>.</li>
+                  <li>Fill the required fields:
+                    <ul>
+                      <li><strong>Work days</strong>: select working days.</li>
+                      <li><strong>Work hours</strong>: e.g., 9:00 AM - 5:00 PM.</li>
+                      <li><strong>Address</strong>: city/area/street…</li>
+                      <li><strong>Description</strong>: brief services overview.</li>
+                      <li><strong>Phone</strong>: contact number (prefer international format).</li>
+                      <li><strong>Google Maps link</strong>: required here.</li>
+                      <li><strong>Website</strong>: optional (must be valid http/https).</li>
+                    </ul>
+                  </li>
+                  <li>Auto-fill Maps link:
+                    <ul>
+                      <li>Tap <strong>Use current location</strong>.</li>
+                      <li>Allow location permission if requested.</li>
+                      <li>A Maps link is generated using coordinate search.</li>
+                    </ul>
+                  </li>
+                  <li>Save options:
+                    <ul>
+                      <li><strong>Publish</strong>: show the center in the directory.</li>
+                      <li><strong>Save as draft</strong>: save without publishing (hidden).</li>
+                      <li><strong>Hide</strong>: unpublish (remove from directory).</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Note</strong>
+                  <p class="muted" style="margin:0">
+                    Listing status (Published / Hidden) appears at the top of the screen, and you can update data even while published.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s7">
+              <summary><span class="title">7) Center: Booking Management (Approve / Reject / Reschedule)</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Booking management</span> <span class="badge warn"><i></i>Requests</span></p>
+
+                <ol>
+                  <li>Open <strong>Booking Management</strong>.</li>
+                  <li>You will see tabs:
+                    <ul>
+                      <li><strong>Requests</strong>: new requests or reschedule requests awaiting guardian response.</li>
+                      <li><strong>Schedule</strong>: approved bookings ordered by appointment time.</li>
+                    </ul>
+                  </li>
+
+                  <li>In <strong>Requests</strong>:
+                    <ul>
+                      <li>Open a request to view details (sender/message/preferred time/duration).</li>
+                      <li>Choose an action:
+                        <ul>
+                          <li><strong>Approve</strong>: select final date/time + duration, then confirm.</li>
+                          <li><strong>Reschedule</strong>: propose a new time (guardian must accept/decline).</li>
+                          <li><strong>Reject</strong>: provide a reason and confirm.</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>In <strong>Schedule</strong>:
+                    <ul>
+                      <li>Confirmed appointments appear with time and duration.</li>
+                      <li>You can also <strong>Reschedule</strong> from the schedule tab (propose a new time).</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <details>
+                  <summary>What happens on “Reschedule”?</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    The center proposes a new time, the booking becomes <code>rescheduled</code>,
+                    and the guardian must accept or decline from the <strong>Needs action</strong> tab.
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s8">
+              <summary><span class="title">8) Center: Performance Screen</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Performance</span> <span class="badge"><i></i>Analytics</span></p>
+
+                <ol>
+                  <li>Open <strong>Center Performance</strong>.</li>
+                  <li>You will see summary cards such as:
+                    <ul>
+                      <li>Center performance score (0–100).</li>
+                      <li>Total individuals.</li>
+                      <li>Total sessions (and sessions in last 30/90 days).</li>
+                      <li>Upcoming sessions within 7 days.</li>
+                      <li>Individuals with no sessions, or no upcoming session.</li>
+                    </ul>
+                  </li>
+                  <li>Change the <strong>time filter</strong> (All / Last 30 / Last 90) to view a subset of data.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s9">
+              <summary><span class="title">9) Center: Archive</span></summary>
+              <div class="sec-body">
+                <p><span class="badge"><i></i>Archive</span> <span class="badge warn"><i></i>Archived individuals</span></p>
+                <p class="muted">
+                  You can reach <strong>Archive</strong> directly from <strong>Center Management</strong> using the archive button.
+                </p>
+
+                <ol>
+                  <li>Open <strong>Archive</strong>.</li>
+                  <li>You will see a list of archived individuals (if any).</li>
+                  <li>Each item shows:
+                    <ul>
+                      <li>Individual name (if saved in archive data).</li>
+                      <li>Who it was archived from (name/email if available).</li>
+                      <li>Archive date.</li>
+                    </ul>
+                  </li>
+                  <li>Actions:
+                    <ul>
+                      <li>Tap an item to open archived sessions for that individual.</li>
+                      <li>Delete (🗑️) removes the archive document from the list.</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <details>
+                  <summary>Restore a session from the archive</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    The project includes logic to restore an archived session back under the original individual
+                    (copying session data and answers depending on the storage/encryption implementation).
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s10">
+              <summary><span class="title">10) Admin: Center Requests & Verification</span></summary>
+              <div class="sec-body">
+                <p>
+                  The <strong>Admin</strong> account in <strong>Infinite Aura</strong> is responsible for
+                  reviewing <strong>new center registrations</strong> and controlling a center account status
+                  (approve / reject / freeze / request document re-upload) to ensure published centers are trustworthy.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Admin panel</span>
+                  <span class="badge warn"><i></i>Verification</span>
+                  <span class="badge ok"><i></i>Approve / Freeze</span>
+                  <span class="badge bad"><i></i>Reject</span>
+                </p>
+
+                <div class="callout">
+                  <strong>How do I reach this screen?</strong>
+                  <p class="muted" style="margin:0">
+                    From an <strong>Admin</strong> account: open the admin dashboard and go to <strong>Centers Management</strong>.
+                  </p>
+                </div>
+
+                <h3>1) Center states in the project</h3>
+                <ul>
+                  <li><code>verification_status</code>:
+                    <ul>
+                      <li><strong>pending</strong>: new center awaiting review</li>
+                      <li><strong>approved</strong>: verified and allowed to publish/receive bookings</li>
+                      <li><strong>rejected</strong>: rejected (may be allowed to re-upload)</li>
+                    </ul>
+                  </li>
+                  <li><code>account_status</code>:
+                    <ul>
+                      <li><strong>active</strong>: account is active</li>
+                      <li><strong>frozen</strong>: access is restricted until unfreezed</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <h3>2) Review a new center</h3>
+                <ol>
+                  <li>Open the <strong>Pending</strong> filter/tab.</li>
+                  <li>Tap a center card to open details.</li>
+                  <li>Review:
+                    <ul>
+                      <li>Center name, email, country</li>
+                      <li>Uploaded verification documents</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <div class="callout">
+                  <strong>Main admin actions</strong>
+                  <ul class="muted" style="margin:0; padding-left:18px">
+                    <li><strong>Approve</strong>: set verification to <strong>approved</strong>.</li>
+                    <li><strong>Reject</strong>: set verification to <strong>rejected</strong> and optionally store a reason.</li>
+                    <li><strong>Request re-upload</strong>: ask the center to upload updated verification documents.</li>
+                  </ul>
+                </div>
+
+                <h3>3) Freeze / Unfreeze a center</h3>
+                <ol>
+                  <li>From the center card/details, tap <strong>Freeze</strong>.</li>
+                  <li>The <code>account_status</code> becomes <strong>frozen</strong>.</li>
+                  <li>To restore access, tap <strong>Unfreeze</strong> so it returns to <strong>active</strong>.</li>
+                </ol>
+
+                <details>
+                  <summary>When should I freeze instead of reject?</summary>
+                  <div class="hr"></div>
+                  <ul>
+                    <li class="muted"><strong>Reject</strong>: typically during initial review when docs are invalid/missing.</li>
+                    <li class="muted"><strong>Freeze</strong>: a temporary restriction after the account was already active.</li>
+                  </ul>
+                </details>
+
+                <h3>4) How admin decisions affect users</h3>
+                <ul>
+                  <li class="muted">An <strong>approved</strong> center can publish its listing and receive bookings.</li>
+                  <li class="muted">A <strong>rejected</strong> center may see a rejection screen and re-upload instructions (if enabled).</li>
+                  <li class="muted">A <strong>frozen</strong> center may be redirected to a frozen screen and blocked from actions until unfrozen.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s11">
+              <summary><span class="title">11) Sub-admin: Country-based Center Management</span></summary>
+              <div class="sec-body">
+                <p>
+                  The <strong>Sub-admin</strong> role has a similar purpose to Admin (review centers and take actions),
+                  but with permissions <strong>restricted to a specific country</strong>. Sub-admin only sees and manages
+                  centers in their assigned country.
+                </p>
+
+                <p>
+                  <span class="badge"><i></i>Sub-admin</span>
+                  <span class="badge"><i></i>Country-scoped</span>
+                  <span class="badge ok"><i></i>Approve / Freeze</span>
+                  <span class="badge warn"><i></i>Limited access</span>
+                </p>
+
+                <div class="callout">
+                  <strong>Permissions principle</strong>
+                  <p class="muted" style="margin:0">
+                    The sub-admin’s country is stored in the sub-admin account.
+                    Based on it, only centers in the same country are visible and manageable.
+                  </p>
+                </div>
+
+                <h3>1) What can a sub-admin do?</h3>
+                <ul>
+                  <li>View centers in their country (Pending / Approved / Rejected / Frozen using filters).</li>
+                  <li>Open center details and review verification documents.</li>
+                  <li>Perform:
+                    <ul>
+                      <li><strong>Approve</strong></li>
+                      <li><strong>Reject with reason</strong></li>
+                      <li><strong>Freeze / Unfreeze</strong></li>
+                      <li><strong>Request document re-upload</strong></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <h3>2) What can a sub-admin NOT do?</h3>
+                <ul>
+                  <li class="muted">Manage centers outside their country.</li>
+                  <li class="muted">Assign admin roles or change other sub-admin permissions (admin-only).</li>
+                </ul>
+
+                <h3>3) Steps to review a center (sub-admin workflow)</h3>
+                <ol>
+                  <li>Open the centers management screen in the <strong>Sub-admin</strong> account.</li>
+                  <li>Use the <strong>Pending</strong> filter to view new center requests in your country.</li>
+                  <li>Open a center and review documents.</li>
+                  <li>Choose an action:
+                    <ul>
+                      <li><strong>Approve</strong> if documents are valid.</li>
+                      <li><strong>Reject</strong> with a reason if something is missing/invalid.</li>
+                      <li><strong>Request re-upload</strong> if the center only needs updated files.</li>
+                    </ul>
+                  </li>
+                  <li>If needed, use <strong>Freeze</strong> for a temporary restriction.</li>
+                </ol>
+
+                <details>
+                  <summary>How do sub-admin decisions appear to the center?</summary>
+                  <div class="hr"></div>
+                  <ul>
+                    <li class="muted">Updates to <code>verification_status</code> and/or <code>account_status</code> show immediately after sync.</li>
+                    <li class="muted">On <strong>re-upload request</strong>, the center sees instructions and can submit new documents.</li>
+                  </ul>
+                </details>
+
+                <div class="callout">
+                  <strong>Professional tip</strong>
+                  <p class="muted" style="margin:0">
+                    Write clear reasons (e.g., “License not readable” / “Missing document”) to speed up fixes and reduce support back-and-forth.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s12">
+              <summary><span class="title">12) Notifications</span></summary>
+              <div class="sec-body">
+                <p>
+                  The app uses notifications (Firebase + local notifications) for:
+                  <strong>booking updates</strong> and (depending on enabled features) session scheduling/reminders.
+                </p>
+
+                <ol>
+                  <li>On first use, notification permission may be requested.</li>
+                  <li>If you disabled notifications in the system:
+                    <ul>
+                      <li>Open phone Settings &gt; Apps &gt; Infinite Aura &gt; Notifications, and enable them again.</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <details>
+                  <summary>Open app notification settings directly</summary>
+                  <div class="hr"></div>
+                  <p class="muted">
+                    The project includes logic to open the system notification settings screen directly from inside the app (especially on Android).
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <details class="policy-sec" id="s13">
+              <summary><span class="title">13) Quick Fixes & Support</span></summary>
+              <div class="sec-body">
+                <h3>Common issues</h3>
+                <ul>
+                  <li><strong>OTP not received:</strong> check Spam, use the latest code, confirm the email is correct.</li>
+                  <li><strong>Booking not showing for the guardian:</strong> refresh the screen, ensure you are signed in, and allow time for sync.</li>
+                  <li><strong>Invalid Maps link:</strong> use “Use current location” or paste a valid http/https Google Maps link.</li>
+                  <li><strong>No notifications:</strong> enable notification permission in system settings, then reopen the app.</li>
+                </ul>
+
+                <div class="callout">
+                  <strong>Contact</strong>
+                  <p class="muted" style="margin:0">
+                    Support/Privacy email: <strong>app.asd.cure@gmail.com</strong><br/>
+                    (Use a clear subject: Support / Booking / Account / Verification)
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- ===================== END MANUAL SECTIONS ===================== -->
+
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <div class="footer">
+      <strong>Note:</strong>
+      <p class="muted" style="margin-top:8px">
+        This manual was written to match the actual flows implemented in the project
+        (Register/Login with OTP, Centers Directory + Booking, Center Booking Management, Public Center Listing publish/hide,
+        Performance, and Archive).
+      </p>
+      <p class="muted" style="margin:0">
+        © <span id="year"></span> <strong>Infinite Aura</strong>. All rights reserved.
+      </p>
+    </div>
+  </div>
+
+<script>
+  // Dynamic year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Sections only
+  const policyDetails = Array.from(document.querySelectorAll("details.policy-sec"));
+
+  function toggleAll(open){
+    policyDetails.forEach(d => d.open = !!open);
+  }
+
+  // Accordion: opening one closes the others
+  let allowMultipleOpen = false;
+  policyDetails.forEach(d => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      if (allowMultipleOpen) return;
+      policyDetails.forEach(other => {
+        if (other !== d) other.open = false;
+      });
+    });
+  });
+
+  const _toggleAll = toggleAll;
+  toggleAll = function(open){
+    allowMultipleOpen = true;
+    _toggleAll(open);
+    setTimeout(() => { allowMultipleOpen = false; }, 0);
+  };
+
+  // Highlight active TOC link
+  const tocLinksDesktop = Array.from(document.querySelectorAll("#toc a"));
+  const tocLinksMobile = Array.from(document.querySelectorAll("#tocMobile a"));
+  const allLinks = [...tocLinksDesktop, ...tocLinksMobile];
+  const linkMap = new Map(allLinks.map(a => [a.getAttribute("href"), a]));
+
+  function setActive(id){
+    allLinks.forEach(a => a.classList.remove("active"));
+    const a = linkMap.get("#" + id);
+    if(a) a.classList.add("active");
+    tocLinksDesktop.forEach(x => { if(x.getAttribute("href")==="#" + id) x.classList.add("active"); });
+    tocLinksMobile.forEach(x => { if(x.getAttribute("href")==="#" + id) x.classList.add("active"); });
+  }
+
+  // If a TOC link is clicked: open the section before scrolling
+  allLinks.forEach(a => {
+    a.addEventListener("click", () => {
+      const href = a.getAttribute("href");
+      if(!href || !href.startsWith("#")) return;
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if(target && target.matches("details.policy-sec")){
+        target.open = true;
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      setActive(e.target.id);
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
+
+  policyDetails.forEach(d => observer.observe(d));
+
+  // Close mobile TOC after click
+  document.querySelectorAll("#tocMobile a").forEach(a=>{
+    a.addEventListener("click", ()=>{
+      const details = document.querySelector("details.tocMobile");
+      if(details) details.open = false;
+    });
+  });
+</script>
+
+</body>
+</html>
