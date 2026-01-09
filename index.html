@@ -722,239 +722,170 @@
               </div>
             </details>
 
-            <details class="policy-sec" id="s5">
-              <summary><span class="title">5) Individuals: Add & Manage</span></summary>
-              <div class="sec-body">
-                <p>
-                  The <strong>Individuals</strong> screen is the starting point to manage individuals in the project.
-                  From there you can <strong>add an individual</strong>, open their profile, view sessions, and
-                  (for Center accounts) also <strong>schedule an upcoming session</strong>.
+          <details class="policy-sec" id="s5a">
+            <summary><span class="title">5-A) Create a new session</span></summary>
+            <div class="sec-body">
+              <p>
+                The <strong>New Session</strong> screen is used to create an assessment session within the system.
+                The result depends on three parts: <strong>Photo analysis</strong>, <strong>Questionnaire</strong>, and <strong>Activities</strong>.
+                After running the analysis, the session is saved and the results screen opens.
+              </p>
+          
+              <p>
+                <span class="badge"><i></i>Photo analysis</span>
+                <span class="badge"><i></i>Questionnaire</span>
+                <span class="badge"><i></i>Activities</span>
+                <span class="badge ok"><i></i>Analyze then save</span>
+              </p>
+          
+              <div class="callout">
+                <strong>How do I reach this screen?</strong>
+                  From the individual details screen, choose Start a new session.
                 </p>
-
-                <p>
-                  <span class="badge"><i></i>Individuals list</span>
-                  <span class="badge ok"><i></i>Add individual</span>
-                  <span class="badge warn"><i></i>Upcoming session</span>
-                </p>
-
-                <h3>First: View the individuals list</h3>
-                <ol>
-                  <li>Open <strong>Individuals</strong>.</li>
-                  <li>You will see a list of saved individuals.</li>
-                  <li>Tap a card to open <strong>Individual Details</strong>.</li>
-                </ol>
-
-                <h3>Second: Add a new individual</h3>
-                <ol>
-                  <li>From the list screen, tap <strong>+</strong> or <strong>Add</strong>.</li>
-                  <li>Fill the basic data:
-                    <ul>
-                      <li><strong>First name</strong> and <strong>Last name</strong> (required).</li>
-                      <li><strong>Gender</strong> (Male/Female).</li>
-                      <li><strong>Date of birth</strong> (pick a date).</li>
-                      <li><strong>Notes</strong> (optional).</li>
-                    </ul>
-                  </li>
-                  <li>(Optional) Add a profile photo:
-                    <ul>
-                      <li><strong>Camera</strong> or <strong>Gallery</strong>.</li>
-                    </ul>
-                  </li>
-                  <li>(Optional) Guardian info:
-                    <ul>
-                      <li><strong>Guardian name</strong> / <strong>Relation</strong> / <strong>Guardian email</strong></li>
-                    </ul>
-                  </li>
-                  <li>Tap <strong>Save</strong> to add the individual to the list.</li>
-                </ol>
-
-                <div class="callout">
-                  <strong>Project linkage</strong>
-                  <p class="muted" style="margin:0">
-                    If you upload an individual photo, it later appears in the individual profile screen.
-                    The individual file is the base for all sessions and results.
-                  </p>
-                </div>
-
-                <h3>Third: Open an individual file (details / profile)</h3>
-                <ol>
-                  <li>Tap the individual card.</li>
-                  <li>In <strong>Individual Details</strong> you’ll find quick actions such as:
-                    <ul>
-                      <li><strong>Start a new session</strong> (see 5-A).</li>
-                      <li><strong>Review status</strong> (if enabled).</li>
-                      <li><strong>Open profile</strong> (basic info + photo).</li>
-                    </ul>
-                  </li>
-                  <li>Below you’ll see a list of <strong>sessions</strong>; tap any session to open <strong>Session Results</strong> (see 5-B).</li>
-                </ol>
-
-                <details>
-                  <summary>Center feature: Schedule an upcoming session</summary>
-                  <div class="hr"></div>
-                  <p class="muted">
-                    From the Individuals list (when signed in as <strong>Center</strong>), you can use
-                    <strong>Schedule next session</strong>:
-                  </p>
-                  <ol>
-                    <li>Tap <strong>Schedule next session</strong> on the individual card.</li>
-                    <li>Pick <strong>date</strong>, then <strong>time</strong>.</li>
-                    <li>Tap <strong>Save</strong>.</li>
-                  </ol>
-                  <p class="muted" style="margin:0">
-                    The time is saved inside the individual record as <code>next_session_at</code>.
-                  </p>
-                </details>
               </div>
-            </details>
-
-            <details class="policy-sec" id="s5a">
-              <summary><span class="title">5-A) Create a New Session</span></summary>
-              <div class="sec-body">
-                <p>
-                  <strong>New Session</strong> is the core assessment screen in the project.
-                  A session includes a <strong>photo</strong>, <strong>questionnaire answers</strong>, and (optional) <strong>therapies</strong> and <strong>activities</strong>.
-                  On save, scores are calculated and the results screen opens.
-                </p>
-
-                <p>
-                  <span class="badge"><i></i>Photo analysis</span>
-                  <span class="badge"><i></i>Questionnaire</span>
-                  <span class="badge bad"><i></i>Activities</span>
-                  <span class="badge ok"><i></i>Analyze & Save</span>
-                </p>
-
-                <div class="callout">
-                  <strong>How do I reach this screen?</strong>
-                  <p class="muted" style="margin:0">
-                    From <strong>Individual Details</strong>, tap <strong>Start new session</strong>.
-                  </p>
-                </div>
-
-                <h3>1) Add a session photo (required for photo analysis)</h3>
-                <ol>
-                  <li>Tap <strong>Capture photo</strong>.</li>
-                  <li>Select source: <strong>Camera</strong> or <strong>Gallery</strong>.</li>
-                  <li>After selecting, the system analyzes the photo.</li>
-                </ol>
-
-                <details>
-                  <summary>What if no face is detected?</summary>
-                  <div class="hr"></div>
-                  <p class="muted">
-                    If the image does not contain a clear face, you may see a “No face found” message.
-                    Choose another photo or capture a clearer one.
-                  </p>
-                </details>
-
-                <h3>2) Fill the questionnaire</h3>
-                <ol>
-                  <li>You will see a list of questions.</li>
-                  <li>For each question choose a score from 1 to 5.</li>
-                  <li>Complete all required questions for more accurate results.</li>
-                </ol>
-
-                <h3>3) (Optional) Add therapies to the session</h3>
-                <ol>
-                  <li>Open <strong>Therapies</strong>.</li>
-                  <li>Enable a therapy (switch) to include it.</li>
-                  <li>For each therapy you can enter:
-                    <ul>
-                      <li><strong>Goal</strong></li>
-                      <li><strong>Notes</strong></li>
-                      <li><strong>Effectiveness</strong> (1–5)</li>
-                    </ul>
+          
+              <h3>First: Add a session photo (Required)</h3>
+              <ol>
+                <li>Tap the Select photo option.</li>
+                <li>Choose the source: <strong>Camera</strong> or <strong>Gallery</strong>.</li>
+                <li>The photo is checked to detect a face; if no face is detected, you must choose another photo or take a clearer one.</li>
+              </ol>
+          
+            <h3>Second: Select the photo context</h3>
+            <ol>
+              <li>The photo context is a description of the individual’s state <strong>at the moment the photo is taken</strong> only, not a permanent evaluation.</li>
+              <li>Select <strong>one value</strong> based on the behavior shown during photographing.</li>
+              <li>Meanings of the options:
+                <ul>
+                  <li><code>Normal</code>: Normal cooperation, with no clear fear or clear refusal, even if facial expressions are neutral.</li>
+                  <li><code>Shy</code>: Shyness or avoiding looking at the camera while generally remaining cooperative.</li>
+                  <li><code>Fear</code>: Clear signs of fear during photographing such as severe tension, crying, strong distress, or trying to move away due to fear.</li>
+                  <li><code>Unwilling to respond</code>: Clear refusal of photographing or resistance such as turning the face/phone away, covering the face with a hand, or not allowing the photo to be taken.</li>
+                </ul>
+              </li>
+              <li>If the state is unclear, choose <code>Normal</code>.</li>
+              <li>The app may automatically restrict some options if they conflict with the photo analysis results (according to the system’s validation logic).</li>
+            </ol>
+          
+            <h3>Third: Fill in the questionnaire</h3>
+              <ol>
+                <li>Select an answer for the questions with scores from 1 to 5.</li>
+                <li><strong>Basic requirement:</strong> You must answer at least one question before running the analysis.</li>
+                <li>Completing all questions gives a more accurate result.</li>
+              </ol>
+          
+              <h3>Fourth: Add activities to the session (Required)</h3>
+            <ol>
+              <li>From the <strong>Activities</strong> section, choose at least one activity.</li>
+              <li>For each activity, enter <strong>repeats/day</strong> to be <strong>1 or more</strong>.</li>
+              <li>Optional notes can be added for the activity.</li>
+              <li><strong>Basic requirement:</strong> The analysis cannot be run unless at least one activity is selected with repeats/day (≥ 1).</li>
+            </ol>
+          
+              <h3>Fifth: Run the analysis</h3>
+            <ol>
+              <li>Tap the <strong>Analyze</strong> button.</li>
+              <li>The following values are calculated:
+                <ul>
+                  <li><strong>Photo score</strong> (0–100)</li>
+                  <li><strong>Questionnaire score</strong> (0–100)</li>
+                  <li><strong>Activities score</strong> (0–100)</li>
+                  <li><strong>Overall score</strong> (0–100)
                   </li>
-                </ol>
-
-                <h3>4) Add activities</h3>
-                <ol>
-                  <li>From <strong>Activities</strong>, choose an activity.</li>
-                  <li>Set:
-                    <ul>
-                      <li><strong>Repeats per day</strong></li>
-                      <li><strong>Notes</strong> (optional)</li>
-                    </ul>
-                  </li>
-                  <li>Tap <strong>Add activity</strong> to add it to the session list.</li>
-                  <li>You can remove an activity if needed.</li>
-                </ol>
-
-                <h3>5) Save and open results</h3>
-                <ol>
-                  <li>Tap <strong>Analyze</strong>.</li>
-                  <li>The session is saved with scores:
-                    <ul>
-                      <li><strong>Photo score</strong></li>
-                      <li><strong>Questionnaire score</strong></li>
-                      <li><strong>Activities score</strong></li>
-                      <li><strong>Combined score</strong></li>
-                    </ul>
-                  </li>
-                  <li>After saving, you are redirected to <strong>Session Results</strong>.</li>
-                </ol>
-
-                <div class="callout">
-                  <strong>Security note (project-related)</strong>
-                  <p class="muted" style="margin:0">
-                    Session photo and questionnaire answers are handled securely in the project (encryption/decryption for authorized viewers),
-                    so you may notice a small extra loading time when opening results.
-                  </p>
-                </div>
-              </div>
-            </details>
-
-            <details class="policy-sec" id="s5b">
-              <summary><span class="title">5-B) Session Results</span></summary>
-              <div class="sec-body">
-                <p>
-                  <strong>Session Results</strong> shows session details after saving: scores, session photo (if any),
-                  and questionnaire answers in <strong>read-only</strong> mode, plus therapies and activities saved in that session.
-                </p>
-
-                <p>
-                  <span class="badge"><i></i>Results</span>
-                  <span class="badge"><i></i>Session photo</span>
-                  <span class="badge warn"><i></i>Questionnaire answers</span>
-                  <span class="badge ok"><i></i>Therapies &amp; Activities</span>
-                </p>
-
-                <h3>How do I open results?</h3>
-                <ol>
-                  <li>Open <strong>Individual Details</strong>.</li>
-                  <li>From the sessions list, tap a session.</li>
-                  <li><strong>Session Results</strong> opens.</li>
-                </ol>
-
-                <h3>What will you see?</h3>
-                <ol>
-                  <li><strong>Top section</strong>: session date/time and quick summary.</li>
-                  <li><strong>Scores</strong>: Photo / Questionnaire / Activities / Combined (0 to 100).</li>
-                  <li><strong>Session photo</strong> (if saved): displayed after loading and decryption for authorized users.</li>
-                  <li><strong>Questionnaire answers</strong>: shown per question (1–5) with a lock icon <strong>🔒</strong> (read-only).</li>
-                  <li><strong>Therapies</strong>: goal, notes, effectiveness.</li>
-                  <li><strong>Activities</strong>: repeats/day and notes (if any).</li>
-                </ol>
-
-                <details>
-                  <summary>Why does the session photo sometimes not show?</summary>
-                  <div class="hr"></div>
+                </ul>
+              </li>
+            </ol>
+          
+              <h3>Sixth: (Depending on account type) Add therapies to the session</h3>
+            <ol>
+              <li>The <strong>Therapies</strong> section may appear only for accounts authorized within the system.</li>
+              <li>When enabling a therapy within the session, you can enter:
+                <ul>
+                  <li><strong>Goal</strong> (Optional)</li>
+                  <li><strong>Notes</strong> (Optional)</li>
+                  <li><strong>Effectiveness</strong> (1–5) required when selecting the therapy to indicate how effective it is</li>
+                </ul>
+              </li>
+            </ol>
+          
+              <h3>Finally: Save the session and open the results</h3>
+            <ol>
+              <li>After the analysis succeeds, tap <strong>Save</strong>.</li>
+              <li>The session is saved with the main result fields, in addition to:</li>
+              <li>After saving, the <strong>current sessions for the individual</strong> screen opens directly.</li>
+            </ol>
+            </div>
+          </details>
+          
+          <details class="policy-sec" id="s5b"> 
+            <summary><span class="title">5-B) Session results</span></summary>
+            <div class="sec-body">
+              <p>
+                The <strong>Session Results</strong> screen shows the session details after saving: scores, photo data (if available),
+                and questionnaire answers, in addition to activities (and therapies may appear depending on what was added within the session).
+                The data here is for viewing, and the results of a saved session are not edited from the results screen.
+              </p>
+          
+              <p>
+                <span class="badge"><i></i>Overall score</span>
+                <span class="badge"><i></i>Score details</span>
+                <span class="badge"><i></i>Questionnaire</span>
+                <span class="badge"><i></i>Activities</span>
+              </p>
+          
+              <h3>How do I open session results?</h3>
+              <ol>
+                <li>Open <strong>Individual details</strong>.</li>
+                <li>From the <strong>Sessions</strong> list, select the required session.</li>
+                <li>The <strong>Session Results</strong> screen opens.</li>
+              </ol>
+          
+              <h3>Content shown within the results</h3>
+              <ol>
+                <li><strong>Session summary</strong>: date and time and a quick summary.</li>
+                <li><strong>Scores</strong> (0–100):
                   <ul>
-                    <li class="muted">The session may have been saved without a photo.</li>
-                    <li class="muted">There may be a delay while loading/decrypting.</li>
-                    <li class="muted">The current account may not have permission/key to view it (depending on sharing logic).</li>
+                    <li><strong>Photo score</strong></li>
+                    <li><strong>Questionnaire score</strong></li>
+                    <li><strong>Activities score</strong></li>
+                    <li><strong>Overall score</strong> with the weights used in the system (photo analysis 0.35, questionnaire 0.35, activities 0.30).</li>
                   </ul>
-                </details>
-
-                <div class="callout">
-                  <strong>How results connect to other screens</strong>
-                  <p class="muted" style="margin:0">
-                    Session results are directly linked from <strong>Individual Details</strong> (sessions list),
-                    and can later be used by <strong>Status</strong> summaries and performance analytics where enabled.
-                  </p>
-                </div>
+                </li>
+                <li><strong>Activities</strong>:
+                  <ul>
+                    <li>Show the list of activities added to the session.</li>
+                    <li>Show the number of activities and total repeats when available.</li>
+                  </ul>
+                </li>
+                <li><strong>Questionnaire</strong>:
+                  <ul>
+                    <li>Show questionnaire answers with values 1–5 for viewing only.</li>
+                  </ul>
+                </li>
+                <li><strong>Therapies</strong> (if added in the session):
+                  <ul>
+                    <li>Therapy items appear with the goal, notes, and effectiveness if they were added.</li>
+                  </ul>
+                </li>
+              </ol>
+          
+              <details>
+                <summary>When might the session photo not appear?</summary>
+                <div class="hr"></div>
+                <ul>
+                  <li class="muted">The session may be saved without a viewable photo.</li>
+                  <li class="muted">There may be a delay while loading/decoding the photo depending on the system’s protection mechanism.</li>
+                  <li class="muted">Permission to view the content may not be available for the current account depending on sharing and permission logic.</li>
+                </ul>
+              </details>
+          
+              <div class="callout">
+                Linking results with other screens
+                  Session results are linked to the sessions list in the individual details, and are included in performance calculations and reports according to account permissions.
               </div>
-            </details>
+            </div>
+          </details>
+
 
             <details class="policy-sec" id="s5c">
               <summary><span class="title">5-C) Guardian: Centers Directory & Send a Booking Request</span></summary>
@@ -1589,3 +1520,4 @@
 
 </body>
 </html>
+
